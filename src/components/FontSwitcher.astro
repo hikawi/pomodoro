@@ -1,0 +1,20 @@
+<script>
+  import { pomodoro } from "@/stores/pomodoro";
+
+  pomodoro.subscribe((val) => {
+    switch (val.font) {
+      case 0:
+        document.body.classList.remove("font-roboto-slab", "font-space-mono");
+        document.body.classList.add("font-kumbh-sans");
+        break;
+      case 1:
+        document.body.classList.remove("font-kumbh-sans", "font-space-mono");
+        document.body.classList.add("font-roboto-slab");
+        break;
+      default:
+        document.body.classList.remove("font-kumbh-sans", "font-roboto-slab");
+        document.body.classList.add("font-space-mono");
+        break;
+    }
+  });
+</script>
