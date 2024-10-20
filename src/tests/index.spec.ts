@@ -113,3 +113,25 @@ test.describe("settings interactivity", async () => {
     await expect(dialog).not.toBeVisible();
   });
 });
+
+test.describe("settings tab", async () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/");
+    const settings = page.getByRole("button", { name: "Settings" });
+    await settings.click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+  });
+
+  test("close button", async ({ page }) => {
+    const dialog = page.getByRole("dialog");
+    const close = page.getByRole("button", { name: "Close" });
+
+    await expect(close).toBeVisible();
+    await expect(close).toHaveCSS("opacity", "0.5");
+    await close.hover();
+    await expect(close).toHaveCSS("opacity", "1");
+    await close.click();
+    await expect(dialog).not.toBeVisible();
+  });
+});

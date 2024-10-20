@@ -6,6 +6,7 @@
     "longBreak": "Nghỉ dài"
   },
   "settings": {
+    "dialog": "Hộp thoại cài đặt",
     "heading": "Cài đặt",
     "close": "Đóng",
     "time": "Thời gian (phút)",

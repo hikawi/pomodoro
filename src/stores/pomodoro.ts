@@ -1,6 +1,6 @@
 import { persistentMap } from "@nanostores/persistent";
 
-const pomodoro = persistentMap<{
+const $pomodoro = persistentMap<{
   pomodoro: number;
   short: number;
   long: number;
@@ -22,4 +22,4 @@ const pomodoro = persistentMap<{
   },
 );
 
-export { pomodoro };
+export { $pomodoro };

@@ -1,5 +1,5 @@
 import { persistentAtom } from "@nanostores/persistent";
 
-const locale = persistentAtom<string>("locale", "en");
+const $locale = persistentAtom<string>("locale", "en");
 
-export { locale };
+export { $locale };

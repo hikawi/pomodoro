@@ -6,6 +6,7 @@
     "longBreak": "長休憩"
   },
   "settings": {
+    "dialog": "設定ダイアログ",
     "heading": "設定",
     "close": "閉じる",
     "time": "時間（分間）",

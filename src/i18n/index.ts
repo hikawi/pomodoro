@@ -1,8 +1,8 @@
-import { locale } from "@/stores/i18n";
+import { $locale } from "@/stores/i18n";
 import { browser, createI18n, localeFrom } from "@nanostores/i18n";
 
 const localeStore = localeFrom(
-  locale,
+  $locale,
   browser({
     available: ["en", "ja", "vi"],
     fallback: "en",
@@ -15,14 +15,15 @@ const i18n = createI18n(localeStore, {
   },
 });
 
-const clockSwitcher = i18n("clockSwitcher", {
+const $clockSwitcher = i18n("clockSwitcher", {
   radioGroup: "Pick a clock type",
   pomodoro: "pomodoro",
   shortBreak: "short break",
   longBreak: "long break",
 });
 
-const settings = i18n("settings", {
+const $settings = i18n("settings", {
+  dialog: "Settings dialog",
   heading: "Settings",
   close: "Close",
   time: "Time (minutes)",
@@ -31,4 +32,4 @@ const settings = i18n("settings", {
   longBreak: "long break",
 });
 
-export { clockSwitcher, settings };
+export { $clockSwitcher, $settings };

@@ -1,5 +1,5 @@
 import { atom } from "nanostores";
 
-const clockType = atom(0);
+const $clockType = atom(0);
 
-export { clockType };
+export { $clockType };
