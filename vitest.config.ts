@@ -9,5 +9,6 @@ export default getViteConfig({
     // Vitest configuration options
     environment: "jsdom",
     setupFiles: ["./src/tests/setup.ts"],
+    include: ["./src/tests/components/**/*.{spec,test}.{js,ts}"],
   },
 });

@@ -2,6 +2,8 @@
 import "@/base.css";
 import ClockSwitcher from "@/components/ClockSwitcher.svelte";
 import FontSwitcher from "@/components/FontSwitcher.astro";
+import SettingsButton from "@/components/SettingsButton.svelte";
+import SettingsPanel from "@/components/SettingsPanel.svelte";
 ---
 
 <html lang="en">
@@ -30,15 +32,18 @@ import FontSwitcher from "@/components/FontSwitcher.astro";
     />
   </head>
 
-  <body class="flex h-fit min-h-screen flex-col items-center justify-between bg-dark-blue px-6 py-8 pb-12 text-white">
+  <body class="flex h-fit min-h-screen flex-col items-center justify-between bg-dark-blue px-6 py-8 pb-12 text-white md:py-20">
+    <SettingsPanel client:load />
     <FontSwitcher />
+
     <div class="flex w-full flex-col gap-12">
       <img src="/logo.svg" alt="Logo of this app, which is just a piece of text saying pomodoro." class="h-8 object-contain" />
+
       <ClockSwitcher client:load />
     </div>
 
     <div class="">Clock</div>
 
-    <button>Settings</button>
+    <SettingsButton client:load />
   </body>
 </html>

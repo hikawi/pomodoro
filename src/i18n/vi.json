@@ -1,0 +1,16 @@
+{
+  "clockSwitcher": {
+    "radioGroup": "Chọn loại đồng hồ",
+    "pomodoro": "Pomodoro",
+    "shortBreak": "Nghỉ ngắn",
+    "longBreak": "Nghỉ dài"
+  },
+  "settings": {
+    "heading": "Cài đặt",
+    "close": "Đóng",
+    "time": "Thời gian (phút)",
+    "pomodoro": "Pomodoro",
+    "shortBreak": "Nghỉ ngắn",
+    "longBreak": "Nghỉ dài"
+  }
+}
