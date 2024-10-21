@@ -10,8 +10,8 @@ const localeStore = localeFrom(
 );
 
 const i18n = createI18n(localeStore, {
-  get(code) {
-    return import(`./${code}.json`);
+  async get(code) {
+    return await import(`./tl-${code}.json`);
   },
 });
 

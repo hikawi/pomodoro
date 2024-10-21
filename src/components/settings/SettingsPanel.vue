@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { $settings } from "@/i18n";
-import IconClose from "@c/icons/IconClose.vue";
 import { useStore } from "@nanostores/vue";
+import { $pomodoro } from "@s/pomodoro";
 import { $settingsOpen } from "@s/settings-open.ts";
+import SettingsHeader from "./SettingsHeader.vue";
+import SettingsTimeInput from "./SettingsTimeInput.vue";
 
 const settingsOpen = useStore($settingsOpen);
 const tl = useStore($settings);
+const pomodoro = useStore($pomodoro);
 </script>
 
 <template>
@@ -18,27 +21,10 @@ const tl = useStore($settings);
       role="dialog"
       :aria-label="tl.dialog"
     >
-      <div
-        class="flex h-[4.5rem] w-full items-center justify-between border-b-[1px] border-[#E3E1E1] px-6 md:h-[5.81rem] md:px-10"
-      >
-        <h2 class="h2 text-[1.25rem] md:text-[1.75rem]">{{ tl.heading }}</h2>
-        <button
-          @click="$settingsOpen.set(false)"
-          :aria-label="tl.close"
-          class="size-3.5 opacity-50 hover:opacity-100"
-        >
-          <IconClose />
-        </button>
-      </div>
+      <SettingsHeader />
 
       <div class="flex flex-col px-6">
-        <div class="flex flex-col gap-4 py-6">
-          <h3
-            class="md:h4 text-center text-[0.6875rem] font-bold tracking-[0.26444rem]"
-          >
-            {{ tl.time }}
-          </h3>
-        </div>
+        <SettingsTimeInput />
       </div>
     </div>
   </div>

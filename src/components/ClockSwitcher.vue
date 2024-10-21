@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { $clockSwitcher } from "@/i18n/";
-import { $clockType } from "@/stores/clock-type.ts";
 import { useStore } from "@nanostores/vue";
+import { $clockType } from "@s/clock-type.ts";
 import { computed } from "vue";
 
 const clockType = useStore($clockType);
@@ -47,10 +47,12 @@ const items = computed(() => [
         name="clock-type"
         :checked="idx === clockType"
         :value="idx"
-        v-model.number="clockType"
+        @change="$clockType.set(idx)"
         class="m-0 appearance-none"
       />
       {{ item }}
     </label>
   </div>
+
+  {{ clockType }}
 </template>

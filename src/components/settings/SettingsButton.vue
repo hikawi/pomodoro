@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { $settings } from "@/i18n";
-import { $settingsOpen } from "@/stores/settings-open";
+import IconSettings from "@c/icons/IconSettings.vue";
 import { useStore } from "@nanostores/vue";
-import IconSettings from "./icons/IconSettings.vue";
+import { $settingsOpen } from "@s/settings-open";
 
 const tl = useStore($settings);
 </script>
