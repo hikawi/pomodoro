@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { $settings } from "@/i18n";
 import { useStore } from "@nanostores/vue";
-import { $pomodoro } from "@s/pomodoro";
+import { $bgColor, $pomodoro } from "@s/pomodoro";
 import { $settingsOpen } from "@s/settings-open.ts";
+import SettingsColor from "./SettingsColor.vue";
+import SettingsFont from "./SettingsFont.vue";
 import SettingsHeader from "./SettingsHeader.vue";
 import SettingsTimeInput from "./SettingsTimeInput.vue";
+import SettingsTranslate from "./SettingsTranslate.vue";
 
 const settingsOpen = useStore($settingsOpen);
 const tl = useStore($settings);
 const pomodoro = useStore($pomodoro);
+const bgColor = useStore($bgColor);
 </script>
 
 <template>
@@ -17,15 +21,28 @@ const pomodoro = useStore($pomodoro);
     v-if="settingsOpen"
   >
     <div
-      class="w-full max-w-[33.75rem] rounded-2xl bg-white"
+      class="flex w-full max-w-[33.75rem] flex-col rounded-2xl bg-white"
       role="dialog"
       :aria-label="tl.dialog"
     >
       <SettingsHeader />
 
-      <div class="flex flex-col px-6">
+      <div
+        class="flex flex-col divide-y-[1px] divide-darker-blue divide-opacity-10 px-6"
+      >
         <SettingsTimeInput />
+        <SettingsFont />
+        <SettingsColor />
+        <SettingsTranslate />
       </div>
+
+      <button
+        class="relative mx-auto w-[8.75rem] translate-y-1/2 rounded-full py-5 font-bold text-white before:absolute before:inset-0 before:rounded-full before:bg-white before:opacity-0 hover:before:opacity-20 focus:before:opacity-20"
+        :class="bgColor"
+        @click="$settingsOpen.set(false)"
+      >
+        {{ tl.apply }}
+      </button>
     </div>
   </div>
 </template>

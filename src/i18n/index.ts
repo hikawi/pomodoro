@@ -11,7 +11,8 @@ const localeStore = localeFrom(
 
 const i18n = createI18n(localeStore, {
   async get(code) {
-    return await import(`./tl-${code}.json`);
+    /* @vite-ignore */
+    return await import(`./${code}.json`);
   },
 });
 
@@ -30,6 +31,19 @@ const $settings = i18n("settings", {
   pomodoro: "pomodoro",
   shortBreak: "short break",
   longBreak: "long break",
+  font: "Font",
+  sans: "Sans-serif",
+  serif: "Serif",
+  mono: "Monospaced",
+  color: "Color",
+  red: "Red",
+  cyan: "Cyan",
+  purple: "Purple",
+  language: "Language",
+  english: "English",
+  japanese: "Japanese",
+  vietnamese: "Vietnamese",
+  apply: "Apply",
 });
 
 export { $clockSwitcher, $settings };

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
@@ -133,5 +133,39 @@ test.describe("settings tab", async () => {
     await expect(close).toHaveCSS("opacity", "1");
     await close.click();
     await expect(dialog).not.toBeVisible();
+  });
+
+  function hasFont(el: Locator, font: string) {
+    return expect(el).toHaveCSS("font-family", RegExp(`${font}`, "i"));
+  }
+
+  test("font change buttons are in correct font", async ({ page }) => {
+    const sansSerif = page.getByLabel("Sans-serif");
+    const serif = page.getByLabel("Serif", { exact: true });
+    const mono = page.getByLabel("Monospaced");
+
+    await hasFont(sansSerif, "Kumbh Sans");
+    await hasFont(serif, "Roboto Slab");
+    await hasFont(mono, "Space Mono");
+  });
+
+  test("font change buttons change the body's font", async ({ page }) => {
+    const body = page.locator("body");
+
+    const sansSerif = page.getByLabel("Sans-serif");
+    const serif = page.getByLabel("Serif", { exact: true });
+    const mono = page.getByLabel("Monospaced");
+
+    await expect(sansSerif).toBeChecked();
+    await hasFont(body, "Kumbh Sans");
+
+    await serif.click();
+    await expect(sansSerif).not.toBeChecked();
+    await hasFont(body, "Roboto Slab");
+
+    await mono.click();
+    await expect(serif).not.toBeChecked();
+    await expect(mono).toBeChecked();
+    await hasFont(body, "Space Mono");
   });
 });

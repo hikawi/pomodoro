@@ -1,4 +1,5 @@
 import { persistentMap } from "@nanostores/persistent";
+import { computed } from "nanostores";
 
 const $pomodoro = persistentMap<{
   pomodoro: number;
@@ -22,4 +23,16 @@ const $pomodoro = persistentMap<{
   },
 );
 
-export { $pomodoro };
+const $bgColor = computed($pomodoro, (val) => {
+  switch (val.color) {
+    case 0:
+      return "bg-red";
+    case 1:
+      return "bg-aqua";
+    case 2:
+      return "bg-purple";
+  }
+  return "bg-white";
+});
+
+export { $bgColor, $pomodoro };

@@ -12,6 +12,19 @@
     "time": "Thời gian (phút)",
     "pomodoro": "Pomodoro",
     "shortBreak": "Nghỉ ngắn",
-    "longBreak": "Nghỉ dài"
+    "longBreak": "Nghỉ dài",
+    "font": "Phông",
+    "sans": "Không chân",
+    "serif": "Chân",
+    "mono": "Cách đều",
+    "color": "Màu",
+    "red": "Đỏ",
+    "cyan": "Xanh lam",
+    "purple": "Tím",
+    "language": "Ngôn ngữ",
+    "english": "Tiếng Anh",
+    "japanese": "Tiếng Nhật",
+    "vietnamese": "Tiếng Việt",
+    "apply": "OK"
   }
 }
