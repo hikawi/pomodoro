@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { $settings } from "@/i18n";
 import { useStore } from "@nanostores/vue";
-import { $bgColor, $pomodoro } from "@s/pomodoro";
+import { $bgColor } from "@s/pomodoro";
 import { $settingsOpen } from "@s/settings-open.ts";
 import SettingsColor from "./SettingsColor.vue";
 import SettingsFont from "./SettingsFont.vue";
@@ -11,7 +11,6 @@ import SettingsTranslate from "./SettingsTranslate.vue";
 
 const settingsOpen = useStore($settingsOpen);
 const tl = useStore($settings);
-const pomodoro = useStore($pomodoro);
 const bgColor = useStore($bgColor);
 </script>
 

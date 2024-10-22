@@ -10,9 +10,8 @@ const localeStore = localeFrom(
 );
 
 const i18n = createI18n(localeStore, {
-  async get(code) {
-    /* @vite-ignore */
-    return await import(`./${code}.json`);
+  get(code) {
+    return import(`./${code}.json`);
   },
 });
 
