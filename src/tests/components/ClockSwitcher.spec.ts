@@ -2,9 +2,13 @@ import ClockSwitcher from "@c/ClockSwitcher.vue";
 import { $clockType } from "@s/clock-type";
 import { cleanup, fireEvent, render } from "@testing-library/vue";
 import { cleanStores } from "nanostores";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 describe("test ClockSwitcher.vue", () => {
+  beforeEach(() => {
+    $clockType.set(0);
+  });
+
   afterEach(() => {
     cleanup();
     cleanStores($clockType);
@@ -36,5 +40,22 @@ describe("test ClockSwitcher.vue", () => {
     expect(short).not.toBeChecked();
     expect(long).toBeChecked();
     expect($clockType.get()).toBe(2);
+  });
+
+  it("hotkeys for clock type", async () => {
+    const comp = render(ClockSwitcher);
+
+    const pomodoro = comp.getByLabelText("pomodoro");
+    const short = comp.getByLabelText("short break");
+    const long = comp.getByLabelText("long break");
+
+    await fireEvent.keyDown(document, { key: "1" });
+    expect(pomodoro).toBeChecked();
+
+    await fireEvent.keyDown(document, { key: "2" });
+    expect(short).toBeChecked();
+
+    await fireEvent.keyDown(document, { key: "3" });
+    expect(long).toBeChecked();
   });
 });

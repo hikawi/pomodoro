@@ -3,6 +3,7 @@ import { $settings } from "@/i18n";
 import { useStore } from "@nanostores/vue";
 import { $bgColor } from "@s/pomodoro";
 import { $settingsOpen } from "@s/settings-open.ts";
+import { onMounted, useTemplateRef } from "vue";
 import SettingsColor from "./SettingsColor.vue";
 import SettingsFont from "./SettingsFont.vue";
 import SettingsHeader from "./SettingsHeader.vue";
@@ -12,6 +13,12 @@ import SettingsTranslate from "./SettingsTranslate.vue";
 const settingsOpen = useStore($settingsOpen);
 const tl = useStore($settings);
 const bgColor = useStore($bgColor);
+
+const dialog = useTemplateRef("dialog");
+
+onMounted(() => {
+  dialog.value?.focus();
+});
 </script>
 
 <template>
@@ -23,6 +30,8 @@ const bgColor = useStore($bgColor);
       class="flex w-full max-w-[33.75rem] flex-col rounded-2xl bg-white"
       role="dialog"
       :aria-label="tl.dialog"
+      ref="dialog"
+      tabindex="-1"
     >
       <SettingsHeader />
 

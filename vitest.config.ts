@@ -10,7 +10,7 @@ export default getViteConfig({
     coverage: {
       provider: "istanbul",
       enabled: true,
-      reporter: ["text", "html", "clover", "json"],
+      reporter: ["text"],
     },
     environment: "jsdom",
   },

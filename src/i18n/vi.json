@@ -5,6 +5,11 @@
     "shortBreak": "Nghỉ ngắn",
     "longBreak": "Nghỉ dài"
   },
+  "button": {
+    "start": "Bắt đầu",
+    "pause": "Dừng",
+    "resume": "Tiếp tục"
+  },
   "settings": {
     "dialog": "Hộp thoại cài đặt",
     "heading": "Cài đặt",

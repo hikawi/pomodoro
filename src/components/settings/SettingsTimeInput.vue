@@ -33,7 +33,7 @@ function handleInput(key: any, e: Event) {
 <template>
   <div class="flex flex-col gap-4 py-6">
     <h3
-      class="md:h4 text-center text-[0.6875rem] font-bold tracking-[0.26444rem] md:text-left"
+      class="md:h4 text-center text-[0.6875rem] font-bold uppercase tracking-[0.26444rem] md:text-left"
     >
       {{ tl.time }}
     </h3>

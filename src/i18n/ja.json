@@ -5,6 +5,11 @@
     "shortBreak": "短休憩",
     "longBreak": "長休憩"
   },
+  "button": {
+    "start": "スタート",
+    "pause": "休止",
+    "resume": "続く"
+  },
   "settings": {
     "dialog": "設定ダイアログ",
     "heading": "設定",

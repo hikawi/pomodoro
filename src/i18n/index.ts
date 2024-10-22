@@ -11,6 +11,7 @@ const localeStore = localeFrom(
 
 const i18n = createI18n(localeStore, {
   get(code) {
+    /* @vite-ignore */
     return import(`./${code}.json`);
   },
 });
@@ -20,6 +21,12 @@ const $clockSwitcher = i18n("clockSwitcher", {
   pomodoro: "pomodoro",
   shortBreak: "short break",
   longBreak: "long break",
+});
+
+const $button = i18n("button", {
+  start: "start",
+  pause: "pause",
+  resume: "resume",
 });
 
 const $settings = i18n("settings", {
@@ -45,4 +52,4 @@ const $settings = i18n("settings", {
   apply: "Apply",
 });
 
-export { $clockSwitcher, $settings };
+export { $button, $clockSwitcher, $settings };

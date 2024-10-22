@@ -3,13 +3,16 @@ import { $clockSwitcher } from "@/i18n/";
 import { useStore } from "@nanostores/vue";
 import { $clockType } from "@s/clock-type.ts";
 import { $bgColor } from "@s/pomodoro";
-import { computed } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 
 const clockType = useStore($clockType);
 const clockSwitcher = useStore($clockSwitcher);
 const bgColor = useStore($bgColor);
+const mounted = ref(false);
 
 const sliderClass = computed(() => {
+  if (!mounted.value) return "translate-x-0";
+
   const translate = ["translate-x-0", "translate-x-full", "translate-x-[200%]"];
   return `${translate[clockType.value]} ${bgColor.value}`;
 });
@@ -18,6 +21,25 @@ const items = computed(() => [
   clockSwitcher.value.shortBreak,
   clockSwitcher.value.longBreak,
 ]);
+
+function keyboardHandler(e: KeyboardEvent) {
+  switch (e.key) {
+    case "1":
+    case "2":
+    case "3":
+      $clockType.set(+e.key - 1);
+      break;
+  }
+}
+
+onMounted(() => {
+  mounted.value = true;
+  document.addEventListener("keydown", keyboardHandler);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("keydown", keyboardHandler);
+});
 </script>
 
 <template>
@@ -29,7 +51,7 @@ const items = computed(() => [
     <div class="absolute inset-x-1.5 inset-y-2 z-0 rounded-full">
       <div
         data-testid="slider"
-        class="absolute inset-0 w-1/3 rounded-full bg-red duration-200"
+        class="absolute inset-0 w-1/3 rounded-full duration-200"
         :class="sliderClass"
       ></div>
     </div>

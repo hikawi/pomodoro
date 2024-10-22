@@ -1,5 +1,6 @@
 ---
 import "@/base.css";
+import Clock from "@c/Clock.vue";
 import ClockSwitcher from "@c/ClockSwitcher.vue";
 import FontSwitcher from "@c/FontSwitcher.astro";
 import SettingsButton from "@c/settings/SettingsButton.vue";
@@ -38,12 +39,10 @@ import SettingsPanel from "@c/settings/SettingsPanel.vue";
 
     <div class="flex w-full flex-col gap-12">
       <img src="/logo.svg" alt="Logo of this app, which is just a piece of text saying pomodoro." class="h-8 object-contain" />
-
       <ClockSwitcher client:load />
     </div>
 
-    <div class="">Clock</div>
-
+    <Clock client:load />
     <SettingsButton client:load />
   </body>
 </html>
