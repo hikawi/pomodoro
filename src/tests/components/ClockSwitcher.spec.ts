@@ -1,5 +1,6 @@
 import ClockSwitcher from "@c/ClockSwitcher.vue";
 import { $clockType } from "@s/clock-type";
+import { $settingsOpen } from "@s/settings-open";
 import { cleanup, fireEvent, render } from "@testing-library/vue";
 import { cleanStores } from "nanostores";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
@@ -57,5 +58,22 @@ describe("test ClockSwitcher.vue", () => {
 
     await fireEvent.keyDown(document, { key: "3" });
     expect(long).toBeChecked();
+  });
+
+  it("hotkeys don't work if settings is open", async () => {
+    $settingsOpen.set(true);
+
+    const comp = render(ClockSwitcher);
+    const pomodoro = comp.getByLabelText("pomodoro");
+
+    expect(pomodoro).toBeChecked();
+
+    await fireEvent.keyDown(document, { key: "2" });
+    expect(pomodoro).toBeChecked();
+
+    await fireEvent.keyDown(document, { key: "3" });
+    expect(pomodoro).toBeChecked();
+
+    $settingsOpen.set(false);
   });
 });

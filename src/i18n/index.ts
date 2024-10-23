@@ -11,8 +11,7 @@ const localeStore = localeFrom(
 
 const i18n = createI18n(localeStore, {
   get(code) {
-    /* @vite-ignore */
-    return import(`./${code}.json`);
+    return import(/* @vite-ignore */ `./${code}.json`);
   },
 });
 

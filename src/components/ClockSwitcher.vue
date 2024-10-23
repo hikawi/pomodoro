@@ -3,6 +3,7 @@ import { $clockSwitcher } from "@/i18n/";
 import { useStore } from "@nanostores/vue";
 import { $clockType } from "@s/clock-type.ts";
 import { $bgColor } from "@s/pomodoro";
+import { $settingsOpen } from "@s/settings-open";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 
 const clockType = useStore($clockType);
@@ -23,6 +24,8 @@ const items = computed(() => [
 ]);
 
 function keyboardHandler(e: KeyboardEvent) {
+  if ($settingsOpen.get()) return;
+
   switch (e.key) {
     case "1":
     case "2":

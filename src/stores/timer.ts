@@ -16,9 +16,7 @@ const $timerText = computed($timer, (val) => {
 });
 
 // Stop if clockType changes.
-$clockType.subscribe((val, old) => {
-  if (old !== val) stop();
-});
+$clockType.subscribe(stop);
 
 // Stop if settings is changed, the time input, not the font etc.
 $pomodoro.subscribe((val, old) => {
@@ -58,17 +56,16 @@ function start() {
   $started.set(true);
   $timer.set(getMaxTime());
 
-  $intervalId.set(
-    setInterval(() => {
-      if ($timer.get() <= 0) {
-        stop();
-        return;
-      }
-      if ($paused.get()) return;
+  const id = setInterval(() => {
+    if ($timer.get() <= 0) {
+      stop();
+      return;
+    }
+    if ($paused.get()) return;
 
-      $timer.set($timer.get() - 1);
-    }, 1000),
-  );
+    $timer.set($timer.get() - 1);
+  }, 1000);
+  $intervalId.set(id);
 }
 
 function stop() {

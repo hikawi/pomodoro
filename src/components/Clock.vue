@@ -2,6 +2,7 @@
 import { $button } from "@/i18n";
 import { useStore } from "@nanostores/vue";
 import { $pomodoro } from "@s/pomodoro";
+import { $settingsOpen } from "@s/settings-open";
 import {
   $paused,
   $started,
@@ -10,7 +11,14 @@ import {
   getMaxTime,
   start,
 } from "@s/timer";
-import { onMounted, onUnmounted, ref, useTemplateRef, watch } from "vue";
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+  useTemplateRef,
+  watch,
+} from "vue";
 
 const timer = useStore($timer);
 const timerText = useStore($timerText);
@@ -20,16 +28,20 @@ const paused = useStore($paused);
 const tl = useStore($button);
 
 const mounted = ref(false);
+const progress = computed(() => {
+  const maxTime = getMaxTime();
+  return (timer.value > 0 ? timer.value / maxTime : 1) * 100;
+});
 const svgRef = useTemplateRef<HTMLElement>("svg");
 const buttonRef = useTemplateRef<HTMLButtonElement>("theButton");
 
-watch(timer, (time) => {
-  const maxTime = getMaxTime();
-  const value = time > 0 ? time / maxTime : 1;
-  svgRef.value?.style.setProperty("--progress", (value * 100).toString());
+watch(progress, (prog) => {
+  svgRef.value?.style.setProperty("--progress", prog.toString());
 });
 
 function keyboardHandler(e: KeyboardEvent) {
+  if ($settingsOpen.get()) return;
+
   switch (e.key) {
     case "p":
     case "P":
@@ -75,6 +87,7 @@ function buttonClick() {
               mounted && pomodoro.font === 0,
             'tracking-[-0.625rem]': mounted && pomodoro.font === 2,
           }"
+          data-testid="timer"
         >
           {{ timerText }}
         </span>
@@ -94,8 +107,16 @@ function buttonClick() {
         </button>
       </div>
 
-      <div class="absolute inset-2 z-0 md:inset-3">
+      <div
+        class="absolute inset-2 z-0 md:inset-3"
+        role="progressbar"
+        aria-label="Time left"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        :aria-valuenow="progress"
+      >
         <svg
+          aria-hidden="true"
           class="size-full fill-transparent"
           :class="{
             'stroke-red': mounted && pomodoro.color === 0,
