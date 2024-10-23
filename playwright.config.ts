@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./src/tests/pages/",
+  testDir: "./tests/pages/",
   webServer: {
     command: "pnpm dev",
     url: "http://localhost:4321/",
