@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe("settings interactivity", async () => {
   test("hover", async ({ page }) => {
-    const button = page.getByRole("button");
+    const button = page.getByLabel("Settings");
 
     await expect(button).toHaveAccessibleName(/settings/i);
     await expect(button).toHaveCSS("opacity", "0.5");
@@ -15,7 +15,7 @@ test.describe("settings interactivity", async () => {
   });
 
   test("open and close", async ({ page }) => {
-    const button = page.getByRole("button");
+    const button = page.getByLabel("Settings");
 
     await expect(button).toHaveAccessibleName(/settings/i);
     await button.click();
