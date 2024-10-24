@@ -51,6 +51,7 @@ function handleInput(key: any, e: Event) {
           class="h-10 rounded-xl bg-almost-white px-4 outline-none invalid:ring-2 invalid:ring-red valid:focus:ring-2 valid:focus:ring-sky-400"
           :value="label.value"
           @input.prevent="(e) => handleInput(label.key, e)"
+          placeholder="0"
         />
       </label>
     </div>

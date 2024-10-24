@@ -1,47 +1,102 @@
-# Astro Starter Kit: Minimal
+# Frontend Mentor - Pomodoro app solution
 
-```sh
-npm create astro@latest -- --template minimal
-```
+<div align="center">
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+![Coverage](https://img.shields.io/codecov/c/github/hikawi/pomodoro)
+![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fpomodoro.frilly.dev)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+</div>
 
-## 🚀 Project Structure
+This is a solution to the [Pomodoro app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Table of contents
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- [Frontend Mentor - Pomodoro app solution](#frontend-mentor---pomodoro-app-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Keyboard Navigation](#keyboard-navigation)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Overview
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### The challenge
 
-Any static assets, like images, can be placed in the `public/` directory.
+Users should be able to:
 
-## 🧞 Commands
+- Set a pomodoro timer and short & long break timers
+- Customize how long each timer runs for
+- See a circular progress bar that updates every minute and represents how far through their timer they are
+- Customize the appearance of the app with the ability to set preferences for colors and fonts
 
-All commands are run from the root of the project, from a terminal:
+### Keyboard Navigation
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+|                   Key                    | Action                       |
+| :--------------------------------------: | ---------------------------- |
+| <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd> | Select clock type            |
+|               <kbd>P</kbd>               | Start/resume/pause the clock |
 
-## 👀 Want to learn more?
+### Screenshot
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+<details>
+<summary>Home Mobile</summary>
+
+![Home mobile](./screenshots/home-mobile.jpeg)
+
+</details>
+
+<details>
+<summary>Settings Mobile</summary>
+
+![Settings mobile](./screenshots/settings-mobile.jpeg)
+
+</details>
+
+<details>
+<summary>Home Tablet</summary>
+
+![Home tablet](./screenshots/home-tablet.jpeg)
+
+</details>
+
+<details>
+<summary>Settings Tablet</summary>
+
+![Settings tablet](./screenshots/settings-tablet.jpeg)
+
+</details>
+
+<details>
+<summary>Home desktop</summary>
+
+![Home desktop](./screenshots/home-desktop.jpeg)
+
+</details>
+
+<details>
+<summary>Settings desktop</summary>
+
+![Settings desktop](./screenshots/settings-desktop.jpeg)
+
+</details>
+
+### Links
+
+- [Live Site URL](https://pomodoro.frilly.dev/)
+
+## My process
+
+### Built with
+
+- [Astro](https://astro.build/)
+- [Vue](https://vuejs.org)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Nanostores](https://github.com/nanostores/)
+
+### What I learned
+
+I learned how to work with the circular progress bar using `stroke-dasharray` and `<svg>` element. That's kinda weird, but okay to work with for an animatable.

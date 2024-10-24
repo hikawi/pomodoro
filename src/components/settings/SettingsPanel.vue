@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="fixed inset-0 z-50 flex size-full items-center justify-center bg-[#0A0C1C] bg-opacity-50 px-6 py-10 text-darker-blue"
+    class="absolute inset-0 z-50 flex h-fit min-h-full w-full items-center justify-center bg-[#0A0C1C] bg-opacity-50 px-6 py-10 text-darker-blue"
     v-if="settingsOpen"
   >
     <div
